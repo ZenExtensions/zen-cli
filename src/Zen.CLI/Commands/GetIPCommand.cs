@@ -28,6 +28,7 @@ namespace Zen.CLI.Commands
             var response = await api.GetInfoAsync();
             if(response.StatusCode != HttpStatusCode.OK)
                 throw new CommandException(message: $"Error {response.StatusCode} when getting ip: {response.Error.Content}");
+            
             await clipboard.SetTextAsync(text: response.Content.IpAddr, cancellationToken);
             await console.Output.WriteLineAsync($"IP is {response.Content.IpAddr}");
         }
