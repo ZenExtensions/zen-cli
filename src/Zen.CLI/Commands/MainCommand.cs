@@ -9,7 +9,7 @@ namespace Zen.CLI.Commands
     {
         public override async ValueTask ExecuteCommandAsync(IConsole console)
         {
-            await console.Output.WriteLineAsync("Currently in development");
+            await console.Output.WriteLineAsync("Hello World, Zen is currently in development");
         }
     }
 }
