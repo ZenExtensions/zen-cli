@@ -2,7 +2,25 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>zen</ToolCommandName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>WajahatAliAbid</Company>
+    <Description>Zen CLI to automate boring work</Description>
+    <RepositoryUrl>https://github.com/WajahatAliAbid/zen-cli</RepositoryUrl>
+    <PackageId>zencli</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +29,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Refit" Version="6.0.38" />
+    <PackageReference Include="TextCopy" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TextCopy;
 using Zen.CLI.Commands;
 
 namespace Zen.CLI
@@ -9,6 +10,8 @@ namespace Zen.CLI
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MainCommand>();
+            services.AddSingleton<GetIPCommand>();
+            services.InjectClipboard();
         }
     }
 }

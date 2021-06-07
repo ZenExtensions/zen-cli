@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Exceptions;
@@ -10,14 +11,15 @@ namespace Zen.CLI.Commands
     {
         public async ValueTask ExecuteAsync(IConsole console)
         {
+            var cancellationToken = console.RegisterCancellationHandler();
             try
             {
-                await ValidateAsync();
+                await ValidateAsync(cancellationToken);
             }
             catch (NotImplementedException) { }
             try
             {
-                await ExecuteCommandAsync(console);
+                await ExecuteCommandAsync(console, cancellationToken);
                 await console.Output.WriteLineAsync();
             }
             catch (TaskCanceledException ex)
@@ -26,9 +28,9 @@ namespace Zen.CLI.Commands
             }
         }
 
-        public abstract ValueTask ExecuteCommandAsync(IConsole console);
+        public abstract ValueTask ExecuteCommandAsync(IConsole console, CancellationToken cancellationToken);
 
-        public virtual ValueTask ValidateAsync()
+        public virtual ValueTask ValidateAsync(CancellationToken cancellationToken)
         {
             return default;
         }

@@ -12,7 +12,9 @@ namespace Zen.CLI.Extensions
             TStartup startup = new TStartup();
             var services = startup.Configure();
             var serviceProvider = services.BuildServiceProvider();
-            builder.UseTypeActivator(serviceProvider.GetRequiredService);
+            builder
+                .AddCommandsFromThisAssembly()
+                .UseTypeActivator(serviceProvider.GetRequiredService);
             return builder;
         }
     }

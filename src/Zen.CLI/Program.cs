@@ -9,6 +9,8 @@ namespace Zen.CLI
     {
         public static async Task<int> Main() => 
             await new CliApplicationBuilder()
+                .SetTitle("Zen CLI")
+                .SetDescription("Automate boring stuff 🤖")
                 .UseStartup<Startup>()
                 .Build()
                 .RunAsync();
