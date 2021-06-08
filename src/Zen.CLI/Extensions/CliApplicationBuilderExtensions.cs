@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using CliFx;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,11 +12,12 @@ namespace Zen.CLI.Extensions
         {
             TStartup startup = new TStartup();
             var services = startup.Configure();
-            var serviceProvider = services.BuildServiceProvider();
             builder
                 .AddCommandsFromThisAssembly()
-                .UseTypeActivator(serviceProvider.GetRequiredService);
+                .UseTypeActivator(services.GetRequiredService);
             return builder;
         }
+
+        public static ValueTask<int> BuildAndRunAsync(this CliApplicationBuilder builder) => builder.Build().RunAsync();
     }
 }

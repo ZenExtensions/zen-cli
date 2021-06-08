@@ -12,7 +12,6 @@ namespace Zen.CLI
                 .SetTitle("Zen CLI")
                 .SetDescription("Automate boring stuff 🤖")
                 .UseStartup<Startup>()
-                .Build()
-                .RunAsync();
+                .BuildAndRunAsync();
     }
 }

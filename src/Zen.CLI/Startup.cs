@@ -1,7 +1,9 @@
-using Microsoft.Extensions.Configuration;
+using Autofac;
+using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TextCopy;
 using Zen.CLI.Commands;
+using Zen.Core.Serializers;
 
 namespace Zen.CLI
 {
@@ -9,9 +11,17 @@ namespace Zen.CLI
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<MainCommand>();
-            services.AddSingleton<GetIPCommand>();
             services.InjectClipboard();
+            FlurlHttp.Configure(setting => 
+            {
+                setting.JsonSerializer = new SystemTextJsonSerialzier();
+            });
+        }
+
+        public override void ConfigureContainer(ContainerBuilder container)
+        {
+            container.RegisterAssemblyTypes(typeof(BaseCommand).Assembly)
+                .Where(a => a.IsSubclassOf(typeof(BaseCommand)));
         }
     }
 }

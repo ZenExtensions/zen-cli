@@ -20,12 +20,16 @@ namespace Zen.CLI.Commands
             try
             {
                 await ExecuteCommandAsync(console, cancellationToken);
-                await console.Output.WriteLineAsync();
             }
             catch (TaskCanceledException ex)
             {
                 await console.Error.WriteLineAsync(ex.Message);
             }
+        }
+
+        public ValueTask ShowCommandHelpAsync()
+        {
+            throw new CommandException("Please define a follow up command", showHelp: true);
         }
 
         public abstract ValueTask ExecuteCommandAsync(IConsole console, CancellationToken cancellationToken);
