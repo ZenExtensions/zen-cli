@@ -15,7 +15,7 @@
     <Company>WajahatAliAbid</Company>
     <Description>Zen CLI to automate boring work</Description>
     <RepositoryUrl>https://github.com/WajahatAliAbid/zen-cli</RepositoryUrl>
-    <PackageId>zencli</PackageId>
+    <PackageId>zen-cli</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>
