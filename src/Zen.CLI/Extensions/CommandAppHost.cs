@@ -24,6 +24,7 @@ namespace Zen.CLI.Extensions
                 options.AddCommand<GetIPCommand>("ip")
                     .WithDescription("Gets public ip of the system")
                     .WithAlias("myip")
+                    .WithAlias("public-ip")
                     .WithExample(new []
                     {
                         "getinfo",
