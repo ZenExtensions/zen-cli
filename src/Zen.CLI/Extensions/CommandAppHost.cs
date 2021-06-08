@@ -21,7 +21,14 @@ namespace Zen.CLI.Extensions
         {
             configurator.AddBranch("getinfo", options => 
             {
-                options.AddCommand<GetIPCommand>("ip");
+                options.AddCommand<GetIPCommand>("ip")
+                    .WithDescription("Gets public ip of the system")
+                    .WithAlias("myip")
+                    .WithExample(new []
+                    {
+                        "getinfo",
+                        "ip"
+                    });
             });
             return configurator;
         }

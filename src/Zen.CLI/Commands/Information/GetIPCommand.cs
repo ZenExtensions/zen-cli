@@ -1,17 +1,14 @@
-using System.Threading;
 using System.Threading.Tasks;
 using TextCopy;
 using Flurl.Http;
 using System.Text.Json.Serialization;
 using Zen.Core.Constants;
 using System;
-using Zen.CLI.Commands.Attributes;
 using Spectre.Console.Cli;
 using Spectre.Console;
 
 namespace Zen.CLI.Commands.Information
 {
-    [Command(name: "getinfo ip", Description = "Used to get public ip. This command needs 'xsel' to be installed in linux based systems")]
     public class GetIPCommand : AsyncCommand
     {
         private readonly IClipboard clipboard;
