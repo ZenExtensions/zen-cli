@@ -23,19 +23,24 @@ namespace Zen.CLI.Commands.Information
 
         public override async Task<int> ExecuteAsync(CommandContext context)
         {
-            AnsiConsole.Console.WriteLine("Getting ip...");
-            var response = await DefaultUrls.IFCONFIG_URL
-                    .GetJsonAsync<IfConfigResponse>();
-            try
-            {
+            await AnsiConsole.Status()
+                .Spinner(Spinner.Known.Dots6)
+                .StartAsync("Getting ip...", async ctx =>
+                {
+                    var response = await DefaultUrls.IFCONFIG_URL
+                        .GetJsonAsync<IfConfigResponse>();
+                    try
+                    {
 
-                await clipboard.SetTextAsync(text: response.IpAddr);
-            }
-            catch (Exception ex)
-            {
-                AnsiConsole.Console.WriteLine($"Unable to set clipboard: {ex.Message}");
-            }
-            AnsiConsole.Console.WriteLine($"Your public ip is {response.IpAddr}");
+                        await clipboard.SetTextAsync(text: response.IpAddr);
+                    }
+                    catch (Exception ex)
+                    {
+                        AnsiConsole.Console.WriteLine($"Unable to set clipboard: {ex.Message}");
+                    }
+                    ctx.SpinnerStyle(Style.Parse("green"));
+                    AnsiConsole.Console.WriteLine($"Your public ip is {response.IpAddr}");
+                });
             return 0;
         }
 
