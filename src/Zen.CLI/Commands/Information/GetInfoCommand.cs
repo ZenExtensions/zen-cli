@@ -1,16 +1,12 @@
-using System.Threading;
-using System.Threading.Tasks;
-using CliFx.Attributes;
-using CliFx.Infrastructure;
+using Spectre.Console.Cli;
 
 namespace Zen.CLI.Commands.Information
 {
-    [Command("getinfo", Description = "This command is used to get information about various things")]
-    public class GetInfoCommand : BaseCommand
+    public class GetInfoCommand : Command
     {
-        public override ValueTask ExecuteCommandAsync(IConsole console, CancellationToken cancellationToken)
+        public override int Execute(CommandContext context)
         {
-            return ShowCommandHelpAsync();
+            return 0;
         }
     }
 }

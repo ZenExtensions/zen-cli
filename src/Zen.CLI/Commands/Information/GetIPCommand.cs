@@ -1,18 +1,18 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CliFx.Attributes;
-using CliFx.Exceptions;
-using CliFx.Infrastructure;
 using TextCopy;
 using Flurl.Http;
 using System.Text.Json.Serialization;
 using Zen.Core.Constants;
 using System;
+using Zen.CLI.Commands.Attributes;
+using Spectre.Console.Cli;
+using Spectre.Console;
 
 namespace Zen.CLI.Commands.Information
 {
     [Command(name: "getinfo ip", Description = "Used to get public ip. This command needs 'xsel' to be installed in linux based systems")]
-    public class GetIPCommand : BaseCommand
+    public class GetIPCommand : AsyncCommand
     {
         private readonly IClipboard clipboard;
 
@@ -20,28 +20,28 @@ namespace Zen.CLI.Commands.Information
         {
             this.clipboard = clipboard;
         }
-        public override async ValueTask ExecuteCommandAsync(IConsole console, CancellationToken cancellationToken)
+
+        public override async Task<int> ExecuteAsync(CommandContext context)
         {
-            await console.Output.WriteLineAsync("Getting ip...");
-            try
-            {
-                var response = await DefaultUrls.IFCONFIG_URL
-                    .GetJsonAsync<IfConfigResponse>(cancellationToken);
-                try
+            await AnsiConsole.Status()
+                .Spinner(Spinner.Known.Dots6)
+                .StartAsync("Getting ip...", async ctx =>
                 {
-                    
-                    await clipboard.SetTextAsync(text: response.IpAddr, cancellationToken);   
-                }
-                catch (Exception ex)
-                {
-                    await console.Error.WriteLineAsync($"Unable to set clipboard: {ex.Message}");
-                }
-                await console.Output.WriteLineAsync($"Your public ip is {response.IpAddr}");
-            }
-            catch (FlurlHttpException ex)
-            {
-                throw new CommandException(message: $"Error {ex.StatusCode} when getting ip: {ex.Message}");
-            }
+                    var response = await DefaultUrls.IFCONFIG_URL
+                        .GetJsonAsync<IfConfigResponse>();
+                    try
+                    {
+
+                        await clipboard.SetTextAsync(text: response.IpAddr);
+                    }
+                    catch (Exception ex)
+                    {
+                        AnsiConsole.Console.WriteLine($"Unable to set clipboard: {ex.Message}");
+                    }
+                    ctx.SpinnerStyle(Style.Parse("green"));
+                    AnsiConsole.Console.WriteLine($"Your public ip is {response.IpAddr}");
+                });
+            return 0;
         }
 
         public class IfConfigResponse

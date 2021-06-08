@@ -1,16 +1,14 @@
-using System.Threading;
-using System.Threading.Tasks;
-using CliFx.Attributes;
-using CliFx.Infrastructure;
+using Spectre.Console;
+using Spectre.Console.Cli;
 
 namespace Zen.CLI.Commands
 {
-    [Command]
-    public class MainCommand : BaseCommand
+    public class MainCommand : Command
     {
-        public override async ValueTask ExecuteCommandAsync(IConsole console, CancellationToken cancellationToken)
+        public override int Execute(CommandContext context)
         {
-            await console.Output.WriteLineAsync("Hello World, Zen is currently in development");
+            AnsiConsole.Console.WriteLine("Hello World, Zen is currently in development");
+            return 0;
         }
     }
 }
