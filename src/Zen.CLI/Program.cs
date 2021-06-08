@@ -11,6 +11,7 @@ namespace Zen.CLI
             var app = CommandAppHost.WithStartup<Startup>();
             app.Configure(options => 
             {
+                options.SetApplicationName("zen");
                 options.CaseSensitivity(CaseSensitivity.None);
                 options.ConfigureCommands();
                 
