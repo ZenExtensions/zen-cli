@@ -31,17 +31,19 @@ namespace Zen.CLI.Commands.Information
                     var table = new Table();
                     table.Title = new TableTitle("Network Interfaces", new Style(Color.Aqua));
                     table.AddColumns(
+                        new TableColumn("Id"),
                         new TableColumn("Name"),
                         new TableColumn("Supports Multicast?"),
                         new TableColumn("Operational Status"),
                         new TableColumn("Interface Type"),
                         new TableColumn("DNS Enabled?"),
-                        new TableColumn("Gateway")
+                        new TableColumn("Gateway IP")
                     );
 
                     foreach (var nic in nics)
                     {
                         table.AddRow(
+                            nic.Id,
                             nic.Name,
                             nic.SupportsMulticast.ToString(),
                             GetPlatformSpecificInfo(nic, nic => nic.OperationalStatus),

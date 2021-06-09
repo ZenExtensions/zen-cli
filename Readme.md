@@ -1,5 +1,5 @@
 # Zen
-[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-0.0.2-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#002--2021-06-10)
+[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-0.0.3-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#003--2021-06-10)
 
 This command helps make things several day to day things easier.
 
@@ -36,12 +36,14 @@ zen getinfo nic
 
 This command will display output in following format
 ```bash
-| Name            | Supports Multicast? | Operational Status | Interface Type | DNS Enabled? | Gateway     |
-| --------------- | ------------------- | ------------------ | -------------- | ------------ | ----------- |
-| lo              | False               | Unknown            | Loopback       | True         |             |
-| enp0s10         | True                | Down               | Ethernet       | True         |             |
-| wlp1s0          | True                | Up                 | Ethernet       | True         | 192.168.4.1 |
-| docker0         | True                | Down               | Ethernet       | True         |             |
+                                                      Network Interfaces                                                      
+                                                                                                                              
+| Id              | Name            | Supports Multicast? | Operational Status | Interface Type | DNS Enabled? | Gateway IP  |
+| --------------- | --------------- | ------------------- | ------------------ | -------------- | ------------ | ----------- |
+| lo              | lo              | False               | Unknown            | Loopback       | True         |             |
+| enp0s10         | enp0s10         | True                | Down               | Ethernet       | True         |             |
+| wlp1s0          | wlp1s0          | True                | Up                 | Ethernet       | True         | 192.168.4.1 |
+| docker0         | docker0         | True                | Down               | Ethernet       | True         |             |
 ```
 
 # Changelog
