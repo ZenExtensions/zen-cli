@@ -7,7 +7,11 @@ namespace Zen.CLI.Commands
     {
         public override int Execute(CommandContext context)
         {
-            AnsiConsole.Console.WriteLine("Hello World, Zen is currently in development");
+            AnsiConsole.Render(
+                new FigletText("ZEN CLI")
+                    .LeftAligned()
+                    .Color(Color.Aqua)
+            );
             return 0;
         }
     }

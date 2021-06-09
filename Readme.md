@@ -28,5 +28,21 @@ zen getinfo ip
 This command will get the public ip and copy it to the clipboard.
 *Note*: On linux based environment, [xsel](https://linux.die.net/man/1/xsel) needs to be installed for clipboard to work.
 
+### Get Network Interface Information
+To get information about Network interfaces, use the following command
+```bash
+zen getinfo nic
+```
+
+This command will display output in following format
+```bash
+| Name            | Supports Multicast? | Operational Status | Interface Type | DNS Enabled? | Gateway     |
+| --------------- | ------------------- | ------------------ | -------------- | ------------ | ----------- |
+| lo              | False               | Unknown            | Loopback       | True         |             |
+| enp0s10         | True                | Down               | Ethernet       | True         |             |
+| wlp1s0          | True                | Up                 | Ethernet       | True         | 192.168.4.1 |
+| docker0         | True                | Down               | Ethernet       | True         |             |
+```
+
 # Changelog
 You can read complete changelog [here](./CHANGELOG.md)

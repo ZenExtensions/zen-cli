@@ -30,6 +30,14 @@ namespace Zen.CLI.Extensions
                         "getinfo",
                         "ip"
                     });
+                options.AddCommand<GetNetworkInterfacesCommand>("nic")
+                    .WithDescription("Gets list of network interfaces")
+                    .WithAlias("network-interfaces")
+                    .WithExample(new [] 
+                    {
+                        "getinfo",
+                        "net-interfaces"
+                    });
             });
             return configurator;
         }

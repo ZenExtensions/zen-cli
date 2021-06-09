@@ -36,7 +36,7 @@ namespace Zen.CLI.Commands.Information
                         AnsiConsole.Console.WriteLine($"Unable to set clipboard: {ex.Message}");
                     }
                     ctx.SpinnerStyle(Style.Parse("green"));
-                    AnsiConsole.Console.WriteLine($"Your public ip is {response.IpAddr}");
+                    AnsiConsole.WriteLine($"Your public ip is {response.IpAddr}");
                 });
             return 0;
         }
