@@ -1,5 +1,5 @@
 # Zen
-[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-0.0.3-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#003--2021-06-10)
+[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-0.0.4-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#004--2021-06-11)
 
 This command helps make things several day to day things easier.
 
@@ -45,6 +45,18 @@ This command will display output in following format
 | wlp1s0          | wlp1s0          | True                | Up                 | Ethernet       | True         | 192.168.4.1 |
 | docker0         | docker0         | True                | Down               | Ethernet       | True         |             |
 ```
-
+### Download gitignore file
+To get the gitignore file, run the following command and follow instructions
+```bash
+zen misc gitignore
+```
+You can also specify the query separated by commas with the command
+```bash
+zen misc gitignore --query "visual, go"
+```
+By default, the gitignore file will be stored in the same folder where command is run, but this can be changed by explicitly providing destination
+```bash
+zen misc gitignore --destination /home/user/projects/my-app
+```
 # Changelog
 You can read complete changelog [here](./CHANGELOG.md)
