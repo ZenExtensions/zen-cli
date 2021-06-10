@@ -28,7 +28,7 @@ namespace Zen.CLI.Commands.Misc
             public override ValidationResult Validate()
             {
                 var dir = new DirectoryInfo(Destination);
-                if(dir.Exists)
+                if(!dir.Exists)
                     return ValidationResult.Error(message: "Please enter a valid destination");
                 return ValidationResult.Success();
             }
