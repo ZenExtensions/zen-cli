@@ -7,7 +7,7 @@ namespace Zen.CLI.Extensions
 {
     public static class CommandAppHost
     {
-        public static CommandApp<MainCommand> WithStartup<TStartup>() where TStartup :  BaseStartup, new()
+        public static CommandApp<MainCommand> WithStartup<TStartup>() where TStartup : BaseStartup, new()
         {
             TStartup startup = new TStartup();
             var services = startup.Configure();
@@ -19,13 +19,13 @@ namespace Zen.CLI.Extensions
 
         public static IConfigurator ConfigureCommands(this IConfigurator configurator)
         {
-            configurator.AddBranch("getinfo", options => 
+            configurator.AddBranch("getinfo", options =>
             {
                 options.AddCommand<GetIPCommand>("ip")
                     .WithDescription("Gets public ip of the system")
                     .WithAlias("myip")
                     .WithAlias("public-ip")
-                    .WithExample(new []
+                    .WithExample(new[]
                     {
                         "getinfo",
                         "ip"
@@ -33,7 +33,7 @@ namespace Zen.CLI.Extensions
                 options.AddCommand<GetNetworkInterfacesCommand>("nic")
                     .WithDescription("Gets list of network interfaces")
                     .WithAlias("network-interfaces")
-                    .WithExample(new [] 
+                    .WithExample(new[]
                     {
                         "getinfo",
                         "net-interfaces"

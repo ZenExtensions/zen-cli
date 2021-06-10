@@ -6,7 +6,9 @@ namespace Zen.Core.Serializers
     {
         internal static readonly JsonSerializerOptions options = new JsonSerializerOptions
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true,
+            DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
 
         public static TObj Deserialize<TObj>(this string text)

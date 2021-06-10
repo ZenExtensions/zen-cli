@@ -1,6 +1,7 @@
 using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TextCopy;
+using Zen.Core.Configuration;
 using Zen.Core.Serializers;
 
 namespace Zen.CLI

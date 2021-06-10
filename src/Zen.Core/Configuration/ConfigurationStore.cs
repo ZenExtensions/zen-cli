@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using System.Text.Json;
@@ -10,11 +11,16 @@ namespace Zen.Core.Configuration
     {
         private readonly string fileName;
 
-        public ConfigurationStore(string fileName)
+        public ConfigurationStore(string name)
         {
-            this.fileName = fileName;
+            var dirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".zen");
+            var dir = new DirectoryInfo(dirPath);
+            if(!dir.Exists)
+                dir.Create();
+            fileName = Path.Combine(Path.Combine(dirPath, $"{name}.json"));
+                
         }
-        
+
         /// <inheritdoc/>
         public async Task<TConfiguration> RetrieveAsync()
         {

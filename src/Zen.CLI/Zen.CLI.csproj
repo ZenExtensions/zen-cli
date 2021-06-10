@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(SolutionDir)/LICENSE.txt" Pack="true" PackagePath="LICENSE.txt"/>
+    <None Include="$(SolutionDir)/LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
   </ItemGroup>
 
   <ItemGroup>
