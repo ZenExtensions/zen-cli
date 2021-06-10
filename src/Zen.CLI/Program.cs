@@ -14,7 +14,6 @@ namespace Zen.CLI
                 options.SetApplicationName("zen");
                 options.CaseSensitivity(CaseSensitivity.None);
                 options.ConfigureCommands();
-                
             });
             return await app.RunAsync(args);
         }

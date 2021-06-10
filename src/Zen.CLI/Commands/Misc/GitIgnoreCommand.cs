@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,22 +12,43 @@ using static Spectre.Console.AnsiConsole;
 
 namespace Zen.CLI.Commands.Misc
 {
-    public class GitIgnoreCommand : AsyncCommand
+    public class GitIgnoreCommand : AsyncCommand<GitIgnoreCommand.GitIgnoreSetting>
     {
+        public class GitIgnoreSetting : CommandSettings
+        {
+            [Description("Operating Systems, IDEs, or Programming Languages (use comma to separate values)")]
+            [CommandOption("-q|--query")]
+            public string Query { get; set; }
+
+            [Description("Destination for storing gitignore file")]
+            [DefaultValue("./")]
+            [CommandOption("-d|--destination")]
+            public string Destination { get; set; }
+
+            public override ValidationResult Validate()
+            {
+                var dir = new DirectoryInfo(Destination);
+                if(dir.Exists)
+                    return ValidationResult.Error(message: "Please enter a valid destination");
+                return ValidationResult.Success();
+            }
+        }
+
         private readonly IGitIgnoreService gitignoreService;
         public GitIgnoreCommand(IGitIgnoreService gitignoreService)
         {
             this.gitignoreService = gitignoreService;
         }
-        public override async Task<int> ExecuteAsync(CommandContext context)
+        public override async Task<int> ExecuteAsync(CommandContext context, [NotNull] GitIgnoreSetting setting)
         {
-            var query = Ask<string>("Enter Operating Systems, IDEs, or Programming Languages (use comma to separate values)");
+            if(string.IsNullOrWhiteSpace(setting.Query))
+                setting.Query = Ask<string>("Enter Operating Systems, IDEs, or Programming Languages (use comma to separate values)");
             List<string> types = new List<string>();
             await AnsiConsole.Status()
                 .Spinner(Spinner.Known.Dots6)
                 .StartAsync("Querying...", async ctx =>
                 {
-                    types = await gitignoreService.ListTypesAsync(query);
+                    types = await gitignoreService.ListTypesAsync(setting.Query);
                 });
             if(!types.Any())
             {
@@ -50,17 +73,7 @@ namespace Zen.CLI.Commands.Misc
                 {
                     content = await gitignoreService.DownloadAsync(choices);
                 });
-            var destination = Prompt(
-                new TextPrompt<string>("Enter destination")
-                    .Validate(val =>
-                    {
-                        if(string.IsNullOrWhiteSpace(val))
-                            return false;
-                        var dir = new DirectoryInfo(val);
-                        return dir.Exists;
-                    },message: "Please enter a valid destination")
-            );
-            var fullPath = Path.Combine(destination, ".gitignore");
+            var fullPath = Path.Combine(setting.Destination, ".gitignore");
             await File.WriteAllTextAsync(fullPath, content, Encoding.UTF8);
             WriteLine($"Gitignore file successfully generated for {string.Join(", ", choices)}");
             return 0;

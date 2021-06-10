@@ -9,11 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.4] - 2021-06-11
 
+### Fixed
+
+- Fixed issue displaying cli version
 ### Added
 
 - Added command to generate md5 hash of string
 - Added command to generate gitignore file
 - Added implementation for configuration store 
+- Added info command
 ## [0.0.3] - 2021-06-10
 
 ### Updated
