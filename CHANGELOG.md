@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2021-06-11
+
+### Added
+
+- Added command to generate md5 hash of string
+- Added command to generate gitignore file
+- Added implementation for configuration store 
 ## [0.0.3] - 2021-06-10
 
 ### Updated
@@ -29,7 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added command to get public ip
 
-[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.3..HEAD
+[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.4..HEAD
+[0.0.4]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.3..0.0.4
 [0.0.3]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.2..0.0.3
 [0.0.2]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.1..0.0.2
 [0.0.1]: https://github.com/WajahatAliAbid/zen-cli/releases/tag/0.0.1

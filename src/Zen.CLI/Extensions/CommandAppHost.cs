@@ -51,6 +51,14 @@ namespace Zen.CLI.Extensions
                         "md5",
                         "\"Hello World\""
                     });
+                options.AddCommand<GitIgnoreCommand>("gitignore")
+                    .WithDescription("Utility for gitignore.io")
+                    .WithAlias("giio")
+                    .WithExample(new []
+                    {
+                        "misc",
+                        "gitignore"
+                    });
             });
             return configurator;
         }

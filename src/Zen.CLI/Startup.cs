@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TextCopy;
 using Zen.Core.Configuration;
 using Zen.Core.Serializers;
+using Zen.Core.Services;
 
 namespace Zen.CLI
 {
@@ -15,6 +16,7 @@ namespace Zen.CLI
             {
                 setting.JsonSerializer = new SystemTextJsonSerialzier();
             });
+            services.AddSingleton<IGitIgnoreService, GitIgnoreService>();
         }
     }
 }
