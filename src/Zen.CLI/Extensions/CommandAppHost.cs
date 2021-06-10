@@ -1,6 +1,7 @@
 using Spectre.Console.Cli;
 using Zen.CLI.Commands;
 using Zen.CLI.Commands.Information;
+using Zen.CLI.Commands.Misc;
 using Zen.CLI.Infrastructure;
 
 namespace Zen.CLI.Extensions
@@ -37,6 +38,18 @@ namespace Zen.CLI.Extensions
                     {
                         "getinfo",
                         "net-interfaces"
+                    });
+            });
+
+            configurator.AddBranch("misc", options => 
+            {
+                options.AddCommand<GenerateMD5Command>("md5")
+                    .WithDescription("Generates MD5 hash value")
+                    .WithExample(new []
+                    {
+                        "misc",
+                        "md5",
+                        "\"Hello World\""
                     });
             });
             return configurator;
