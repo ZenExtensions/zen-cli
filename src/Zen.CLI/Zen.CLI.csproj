@@ -40,5 +40,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Zen.Core\Zen.Core.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Zen.SpectreConsole.Extensions" Version="1.0.0" />
+  </ItemGroup>
 
 </Project>
