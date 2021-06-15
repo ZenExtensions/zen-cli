@@ -48,15 +48,15 @@ This command will display output in following format
 ### Download gitignore file
 To get the gitignore file, run the following command and follow instructions
 ```bash
-zen misc gitignore
+zen gitignore
 ```
 You can also specify the query separated by commas with the command
 ```bash
-zen misc gitignore --query "visual, go"
+zen gitignore --query "visual, go"
 ```
 By default, the gitignore file will be stored in the same folder where command is run, but this can be changed by explicitly providing destination
 ```bash
-zen misc gitignore --destination /home/user/projects/my-app
+zen gitignore --destination /home/user/projects/my-app
 ```
 # Changelog
 You can read complete changelog [here](./CHANGELOG.md)

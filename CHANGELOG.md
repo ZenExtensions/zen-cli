@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Moved `gitignore` command the root
+- Renamed `info` command to `logo`
+
 ## [0.0.6] - 2021-06-12
 
 ### Changed

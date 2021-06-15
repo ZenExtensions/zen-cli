@@ -10,7 +10,7 @@ using Spectre.Console.Cli;
 using Zen.Core.Services;
 using static Spectre.Console.AnsiConsole;
 
-namespace Zen.CLI.Commands.Misc
+namespace Zen.CLI.Commands
 {
     public class GitIgnoreCommand : AsyncCommand<GitIgnoreCommand.GitIgnoreSetting>
     {

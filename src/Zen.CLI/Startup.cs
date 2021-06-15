@@ -18,7 +18,7 @@ namespace Zen.CLI
         {
             configurator.SetApplicationName("zen");
             configurator.CaseSensitivity(CaseSensitivity.None);
-            configurator.AddCommand<MainCommand>("info")
+            configurator.AddCommand<MainCommand>("logo")
                 .WithDescription("Displays cli logo");
             configurator.AddBranch("getinfo", options =>
             {
@@ -36,20 +36,21 @@ namespace Zen.CLI
                     .WithExample("getinfo", "nic");
             });
 
+            configurator.AddCommand<GitIgnoreCommand>("gitignore")
+                .WithDescription("Utility for gitignore.io")
+                .WithAlias("giio")
+                .WithExample("gitignore")
+                .WithExample("giio")
+                .WithExample("giio", "-q","visual")
+                .WithExample("giio", "--query","visual","--destination", "/home/user/projects/my-app/")
+                .WithExample("giio", "--query","visual");
+
             configurator.AddBranch("misc", options => 
             {
                 options.SetDescription("Miscalaneous commands");
                 options.AddCommand<GenerateMD5Command>("md5")
                     .WithDescription("Generates MD5 hash value")
                     .WithExample("misc", "md5", "\"Hello World\"");
-                options.AddCommand<GitIgnoreCommand>("gitignore")
-                    .WithDescription("Utility for gitignore.io")
-                    .WithAlias("giio")
-                    .WithExample("misc", "gitignore")
-                    .WithExample("misc", "giio")
-                    .WithExample("misc", "giio", "-q","visual")
-                    .WithExample("misc", "giio", "--query","visual","--destination", "/home/user/projects/my-app/")
-                    .WithExample("misc", "giio", "--query","visual");
             });
         }
 
