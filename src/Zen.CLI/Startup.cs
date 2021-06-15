@@ -8,6 +8,7 @@ using Zen.CLI.Commands.Information;
 using Zen.CLI.Commands.Misc;
 using Zen.Core.Serializers;
 using Zen.Core.Services;
+using Zen.Core.Services.Anime;
 using Zen.SpectreConsole.Extensions;
 
 namespace Zen.CLI
@@ -51,6 +52,11 @@ namespace Zen.CLI
                 options.AddCommand<GenerateMD5Command>("md5")
                     .WithDescription("Generates MD5 hash value")
                     .WithExample("misc", "md5", "\"Hello World\"");
+                options.AddCommand<AnimeQuoteCommand>("anime-quote")
+                    .WithDescription("Displays a random anime quote")
+                    .IsHidden()
+                    .WithExample("misc", "anime-quote")
+                    .WithExample("misc", "anime-quote", "-q", "naruto, one piece");
             });
         }
 
@@ -62,6 +68,7 @@ namespace Zen.CLI
                 setting.JsonSerializer = new SystemTextJsonSerialzier();
             });
             services.AddSingleton<IGitIgnoreService, GitIgnoreService>();
+            services.AddSingleton<IAnimeChanService, AnimeChanService>();
         }
     }
 }

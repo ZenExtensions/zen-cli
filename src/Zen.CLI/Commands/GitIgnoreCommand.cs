@@ -43,12 +43,11 @@ namespace Zen.CLI.Commands
         {
             if(string.IsNullOrWhiteSpace(setting.Query))
                 setting.Query = Ask<string>("Enter Operating Systems, IDEs, or Programming Languages (use comma to separate values)");
-            List<string> types = new List<string>();
-            await AnsiConsole.Status()
+            var types = await AnsiConsole.Status()
                 .Spinner(Spinner.Known.Dots6)
                 .StartAsync("Querying...", async ctx =>
                 {
-                    types = await gitignoreService.ListTypesAsync(setting.Query);
+                    return await gitignoreService.ListTypesAsync(setting.Query);
                 });
             if(!types.Any())
             {
@@ -66,12 +65,11 @@ namespace Zen.CLI.Commands
                         "[green]<enter>[/] to accept)[/]")
                     .AddChoices(types)
             );
-            string content = string.Empty;
-            await AnsiConsole.Status()
+            var content = await AnsiConsole.Status()
                 .Spinner(Spinner.Known.Dots6)
                 .StartAsync("Generating file...", async ctx =>
                 {
-                    content = await gitignoreService.DownloadAsync(choices);
+                    return await gitignoreService.DownloadAsync(choices);
                 });
             var fullPath = Path.Combine(setting.Destination, ".gitignore");
             await File.WriteAllTextAsync(fullPath, content, Encoding.UTF8);
