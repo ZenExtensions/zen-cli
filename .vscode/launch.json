@@ -11,7 +11,8 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/Zen.CLI/bin/Debug/netcoreapp3.1/Zen.CLI.dll",
             "args": [
-                "my-ip"
+                "misc",
+                "advise"
             ],
             "cwd": "${workspaceFolder}/src/Zen.CLI",
             "console": "internalConsole",

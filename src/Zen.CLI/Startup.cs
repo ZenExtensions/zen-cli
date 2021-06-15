@@ -57,6 +57,19 @@ namespace Zen.CLI
                     .IsHidden()
                     .WithExample("misc", "anime-quote")
                     .WithExample("misc", "anime-quote", "-q", "naruto, one piece");
+                
+                options.AddCommand<GenerateInsultCommand>("insult")
+                    .WithDescription("Displays a random insult")
+                    .WithAliases("generate-insult","insult-me")
+                    .IsHidden()
+                    .WithExample("misc", "insult")
+                    .WithExample("misc", "generate-insult");
+                options.AddCommand<GenerateAdviseCommand>("advise")
+                    .WithDescription("Displays a random advise")
+                    .WithAliases("generate-advise","advise-me")
+                    .IsHidden()
+                    .WithExample("misc", "advise")
+                    .WithExample("misc", "generate-advise");
             });
         }
 
@@ -69,6 +82,7 @@ namespace Zen.CLI
             });
             services.AddSingleton<IGitIgnoreService, GitIgnoreService>();
             services.AddSingleton<IAnimeChanService, AnimeChanService>();
+            services.AddSingleton<MiscApiService>();
         }
     }
 }
