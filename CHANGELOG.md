@@ -7,13 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.9] - 2021-07-02
+## [0.0.8] - 2021-07-02
 
 ### Added
 
 - Added command for uuid generation
-
-## [0.0.8] - 2021-06-28
 
 ### Updated
 
@@ -75,8 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added command to get public ip
 
-[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.9..HEAD
-[0.0.9]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.8..0.0.9
+[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.8..HEAD
 [0.0.8]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.7..0.0.8
 [0.0.7]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.6..0.0.7
 [0.0.6]: https://github.com/WajahatAliAbid/zen-cli/compare/0.0.5..0.0.6
