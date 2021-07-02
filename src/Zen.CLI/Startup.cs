@@ -21,6 +21,13 @@ namespace Zen.CLI
             configurator.CaseSensitivity(CaseSensitivity.None);
             configurator.AddCommand<MainCommand>("logo")
                 .WithDescription("Displays cli logo");
+            configurator.AddCommand<GetIPCommand>("uuidgen")
+                    .WithDescription("Generates Guid and copies to clipboard")
+                    .WithAliases("guid", "uuid","guidgen")
+                    .WithExample("uuidgen")
+                    .WithExample("guidgen")
+                    .WithExample("guid")
+                    .WithExample("uuid");
             configurator.AddBranch("getinfo", options =>
             {
                 options.SetDescription("Gets information about various things");
