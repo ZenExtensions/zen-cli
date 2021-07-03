@@ -21,7 +21,7 @@ namespace Zen.CLI
             configurator.CaseSensitivity(CaseSensitivity.None);
             configurator.AddCommand<MainCommand>("logo")
                 .WithDescription("Displays cli logo");
-            configurator.AddCommand<GetIPCommand>("uuidgen")
+            configurator.AddCommand<GenerateGuidCommand>("uuidgen")
                     .WithDescription("Generates Guid and copies to clipboard")
                     .WithAliases("guid", "uuid","guidgen")
                     .WithExample("uuidgen")
