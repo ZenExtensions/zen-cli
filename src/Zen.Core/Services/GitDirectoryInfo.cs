@@ -32,7 +32,8 @@ namespace Zen.Core.Services
         {
             this.directory = directory;
             IsGitDirectory = GitDirectoryInfo.IsDirectoryAGitDirectory(directory);
-            GitDirectoryInfo.populateSubDirectoryInfo(this);
+            if(!IsGitDirectory)
+                GitDirectoryInfo.populateSubDirectoryInfo(this);
         }
 
         static bool IsDirectoryAGitDirectory(DirectoryInfo directory)
@@ -46,16 +47,12 @@ namespace Zen.Core.Services
                 return;
             foreach (var item in gitDirectory.directory.EnumerateDirectories())
             {
+                if(item.Name.StartsWith('.'))
+                    continue;
                 var subGitDirectory = new GitDirectoryInfo(item);
-                if(!subGitDirectory.IsGitDirectory)
-                {
-                    populateSubDirectoryInfo(subGitDirectory);
-                }
                 if(subGitDirectory.IsGitDirectory || subGitDirectory.HasAnySubGitDirectories)
                 {
-                    var exists = gitDirectory.SubDirectories.Any(a=>a.FullName == subGitDirectory.FullName);
-                    if(!exists)
-                        gitDirectory.SubDirectories.Add(subGitDirectory);
+                    gitDirectory.SubDirectories.Add(subGitDirectory);
                 }
             }
         }
