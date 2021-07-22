@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 using TextCopy;
 using Zen.CLI.Commands;
+using Zen.CLI.Commands.Git;
 using Zen.CLI.Commands.Information;
 using Zen.CLI.Commands.Misc;
 using Zen.Core.Serializers;
@@ -17,26 +18,34 @@ namespace Zen.CLI
     {
         public override void ConfigureCommandApp(in IConfigurator configurator)
         {
+            configurator.PropagateExceptions();
             configurator.SetApplicationName("zen");
             configurator.CaseSensitivity(CaseSensitivity.None);
             configurator.AddCommand<MainCommand>("logo")
                 .WithDescription("Displays cli logo");
             configurator.AddCommand<GenerateGuidCommand>("uuidgen")
                     .WithDescription("Generates Guid and copies to clipboard")
-                    .WithAliases("guid", "uuid","guidgen")
+                    .WithAliases("guid", "uuid", "guidgen")
                     .WithExample("uuidgen")
                     .WithExample("guidgen")
                     .WithExample("guid")
                     .WithExample("uuid");
+            configurator.AddBranch("git", options =>
+            {
+                options.SetDescription("Commands for working with git repositories");
+                options.AddCommand<GitSearchCommand>("search")
+                    .WithDescription("Finds git repositories in a directory")
+                    .WithExample("git", "search");
+            });
             configurator.AddBranch("getinfo", options =>
             {
                 options.SetDescription("Gets information about various things");
                 options.AddCommand<GetIPCommand>("ip")
                     .WithDescription("Gets public ip of the system")
                     .WithAliases("myip", "public-ip")
-                    .WithExample("getinfo","ip")
-                    .WithExample("getinfo","myip")
-                    .WithExample("getinfo","public-ip");
+                    .WithExample("getinfo", "ip")
+                    .WithExample("getinfo", "myip")
+                    .WithExample("getinfo", "public-ip");
                 options.AddCommand<GetNetworkInterfacesCommand>("nic")
                     .WithDescription("Gets list of network interfaces")
                     .WithAlias("network-interfaces")
@@ -49,11 +58,11 @@ namespace Zen.CLI
                 .WithAlias("giio")
                 .WithExample("gitignore")
                 .WithExample("giio")
-                .WithExample("giio", "-q","visual")
-                .WithExample("giio", "--query","visual","--destination", "/home/user/projects/my-app/")
-                .WithExample("giio", "--query","visual");
+                .WithExample("giio", "-q", "visual")
+                .WithExample("giio", "--query", "visual", "--destination", "/home/user/projects/my-app/")
+                .WithExample("giio", "--query", "visual");
 
-            configurator.AddBranch("misc", options => 
+            configurator.AddBranch("misc", options =>
             {
                 options.SetDescription("Miscalaneous commands");
                 options.AddCommand<GenerateMD5Command>("md5")
@@ -64,16 +73,16 @@ namespace Zen.CLI
                     .IsHidden()
                     .WithExample("misc", "anime-quote")
                     .WithExample("misc", "anime-quote", "-q", "naruto, one piece");
-                
+
                 options.AddCommand<GenerateInsultCommand>("insult")
                     .WithDescription("Displays a random insult")
-                    .WithAliases("generate-insult","insult-me")
+                    .WithAliases("generate-insult", "insult-me")
                     .IsHidden()
                     .WithExample("misc", "insult")
                     .WithExample("misc", "generate-insult");
                 options.AddCommand<GenerateAdviseCommand>("advise")
                     .WithDescription("Displays a random advise")
-                    .WithAliases("generate-advise","advise-me")
+                    .WithAliases("generate-advise", "advise-me")
                     .IsHidden()
                     .WithExample("misc", "advise")
                     .WithExample("misc", "generate-advise");
@@ -83,7 +92,7 @@ namespace Zen.CLI
         public override void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
         {
             services.InjectClipboard();
-            FlurlHttp.Configure(setting => 
+            FlurlHttp.Configure(setting =>
             {
                 setting.JsonSerializer = new SystemTextJsonSerialzier();
             });

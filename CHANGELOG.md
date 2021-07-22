@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-07-22
+
+### Added
+
+- Added command to search git directories in a folder
+
 ## [1.0.0] - 2021-07-03
 
 ### Fixed
 
 - Fixed command for uuidgen
+
 ## [0.0.8] - 2021-07-02
 
 ### Added

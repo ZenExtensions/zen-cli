@@ -1,5 +1,5 @@
 # Zen
-[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.0.0-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#100--2021-07-03)
+[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.1.0-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#110--2021-07-22)
 
 This command helps make things several day to day things easier.
 
@@ -57,6 +57,17 @@ zen gitignore --query "visual, go"
 By default, the gitignore file will be stored in the same folder where command is run, but this can be changed by explicitly providing destination
 ```bash
 zen gitignore --destination /home/user/projects/my-app
+```
+
+### Git Search Command
+This command finds all git directories in a folder and displays in a tree like structure.
+```bash
+zen git search ~/projects/github
+```
+This yields following output
+```
+github
+└── aws-extensions-for-dotnet-cli
 ```
 # Changelog
 You can read complete changelog [here](./CHANGELOG.md)
