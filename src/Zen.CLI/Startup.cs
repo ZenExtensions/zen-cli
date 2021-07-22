@@ -18,7 +18,6 @@ namespace Zen.CLI
     {
         public override void ConfigureCommandApp(in IConfigurator configurator)
         {
-            configurator.PropagateExceptions();
             configurator.SetApplicationName("zen");
             configurator.CaseSensitivity(CaseSensitivity.None);
             configurator.AddCommand<MainCommand>("logo")

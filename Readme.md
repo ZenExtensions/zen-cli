@@ -1,5 +1,5 @@
 # Zen
-[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.1.0-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#110--2021-07-22)
+[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.1.1-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#111--2021-07-22)
 
 This command helps make things several day to day things easier.
 
