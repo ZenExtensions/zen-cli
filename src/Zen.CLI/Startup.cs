@@ -34,7 +34,7 @@ namespace Zen.CLI
                 options.SetDescription("Commands for working with git repositories");
                 options.AddCommand<GitSearchCommand>("search")
                     .WithDescription("Finds git repositories in a directory")
-                    .WithExample("git", "search","~/projects/github");
+                    .WithExample("git", "search", "~/projects/github");
             });
             configurator.AddBranch("getinfo", options =>
             {
@@ -50,6 +50,11 @@ namespace Zen.CLI
                     .WithAlias("network-interfaces")
                     .WithExample("getinfo", "net-interfaces")
                     .WithExample("getinfo", "nic");
+                options.AddCommand<EndOfLifeCommand>("eol")
+                    .WithDescription("Gets information about end of life for a tool or product")
+                    .WithAliases("end-of-life", "endoflife")
+                    .WithExample("eol")
+                    .WithExample("eol", "--prefix", "dotnet");
             });
 
             configurator.AddCommand<GitIgnoreCommand>("gitignore")

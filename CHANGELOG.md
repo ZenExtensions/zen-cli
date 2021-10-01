@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2021-10-02
+
+### Added
+
+- Added end of life command
+
 ## [1.1.2] - 2021-07-22
 
 ### Fixed
@@ -97,7 +103,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added command to get public ip
 
-[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/1.1.2..HEAD
+[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/1.2.0..HEAD
+[1.2.0]: https://github.com/WajahatAliAbid/zen-cli/compare/1.1.2..1.2.0
 [1.1.2]: https://github.com/WajahatAliAbid/zen-cli/compare/1.1.1..1.1.2
 [1.1.1]: https://github.com/WajahatAliAbid/zen-cli/compare/1.1.0..1.1.1
 [1.1.0]: https://github.com/WajahatAliAbid/zen-cli/compare/1.0.0..1.1.0
