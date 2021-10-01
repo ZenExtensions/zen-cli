@@ -14,9 +14,9 @@ using Zen.SpectreConsole.Extensions;
 
 namespace Zen.CLI
 {
-    public class Startup : BaseStartup
+    public class Startup : BaseStartup, ISpectreConfiguration
     {
-        public override void ConfigureCommandApp(in IConfigurator configurator)
+        public void ConfigureCommandApp(in IConfigurator configurator)
         {
             configurator.SetApplicationName("zen");
             configurator.CaseSensitivity(CaseSensitivity.None);

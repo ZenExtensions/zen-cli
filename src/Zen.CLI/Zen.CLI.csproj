@@ -40,10 +40,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Zen.Core\Zen.Core.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
-    <PackageReference Include="Zen.SpectreConsole.Extensions" Version="1.1.0" />
-  </ItemGroup>
 
 </Project>

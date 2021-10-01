@@ -13,6 +13,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="TextCopy" Version="4.3.1" />
-    <PackageReference Include="Spectre.Console" Version="0.41.0" />
+    <PackageReference Include="Zen.SpectreConsole.Extensions" Version="1.2.0" />
   </ItemGroup>
 </Project>
