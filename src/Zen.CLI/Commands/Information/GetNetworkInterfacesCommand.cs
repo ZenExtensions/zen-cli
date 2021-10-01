@@ -52,7 +52,7 @@ namespace Zen.CLI.Commands.Information
                             nic.GetIPProperties().GatewayAddresses?.FirstOrDefault()?.Address?.ToString() ?? string.Empty
                         );
                     }
-                    table.Border(TableBorder.Markdown);
+                    table.Border(TableBorder.Rounded);
                     ctx.SpinnerStyle(Style.Parse("green"));
                     AnsiConsole.Render(table);
                     return Task.CompletedTask;

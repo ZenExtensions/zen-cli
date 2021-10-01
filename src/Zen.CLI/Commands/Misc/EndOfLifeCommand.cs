@@ -57,9 +57,9 @@ namespace Zen.CLI.Commands.Misc
                         .GetJsonAsync<EndOfLifeObject[]>();
                 });
             var table = new Table();
+            table.Border(TableBorder.Rounded);
             table.AddColumns("Cycle","Release","End Of Life","Latest Version","Is LTS");
-
-            AnsiConsole.MarkupLine("[red]Red[/] color means its no longer supported");
+            AnsiConsole.MarkupLine($"--[bold italic]{tool}[/]--");
             foreach (var item in data)
             {
                 var eolDate = DateTime.Parse(item.Eol);
@@ -70,10 +70,11 @@ namespace Zen.CLI.Commands.Misc
                     $"[{color}]{item.Release}[/]",
                     $"[{color}]{item.Eol}[/]",
                     $"[{color}]{item.Latest}[/]",
-                    $"[{color}]{item.Lts}[/]"
+                    $"[{color}]{item.IsLongTermSupported}[/]"
                 });
             }
             AnsiConsole.Render(table);
+            AnsiConsole.MarkupLine("[red]Red[/] means its no longer supported");
 
 
             return 0;
@@ -92,6 +93,10 @@ namespace Zen.CLI.Commands.Misc
             public string Eol { get; set; }
             public string Latest { get; set; }
             public bool Lts { get; set; }
+            public string IsLongTermSupported
+            {
+                get => Lts ? "Yes": "No";
+            }
         }
     }
 }
