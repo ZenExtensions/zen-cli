@@ -23,7 +23,7 @@ namespace Zen.CLI.Commands.Git
                 throw new DirectoryNotFoundException($"Directory {directory.FullName} not found");
             }
             var tree = AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .Start<Tree>("Building git directory context...", ctx => 
                 {
                     var info = new GitDirectoryInfo(directory);

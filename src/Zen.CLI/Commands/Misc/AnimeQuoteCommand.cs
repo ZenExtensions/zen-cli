@@ -23,7 +23,7 @@ namespace Zen.CLI.Commands.Misc
             if (!string.IsNullOrWhiteSpace(settings.Query))
             {
                 var animes = await AnsiConsole.Status()
-                    .Spinner(Spinner.Known.Dots6)
+                    .Spinner(Spinner.Known.Dots)
                     .StartAsync("Querying...", async ctx =>
                     {
                         return await animeService.GetAnimeListAsync(query: settings.Query);
@@ -51,7 +51,7 @@ namespace Zen.CLI.Commands.Misc
             }
             var spinnerMessage = anime is null ? "Getting quote..." : $"Getting quote for {anime}..."; 
             var quote = await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync(spinnerMessage, async ctx =>
                 {
                     return await animeService.GetRandomQuoteAsync(anime: anime);

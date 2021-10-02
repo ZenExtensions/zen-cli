@@ -17,7 +17,7 @@ namespace Zen.CLI.Commands.Misc
         public override async Task<int> ExecuteAsync(CommandContext context)
         {
             var insult = await Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Generating...", async ctx =>
                 {
                     return await miscApi.GenerateInsultAsync();

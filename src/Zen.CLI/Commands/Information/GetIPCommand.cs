@@ -21,7 +21,7 @@ namespace Zen.CLI.Commands.Information
         public override async Task<int> ExecuteAsync(CommandContext context)
         {
             await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Getting ip...", async ctx =>
                 {
                     var response = await DefaultUrls.IFCONFIG_URL

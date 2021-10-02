@@ -10,7 +10,7 @@ namespace Zen.Core.Serializers
             => s.Deserialize<T>();
 
         public T Deserialize<T>(Stream stream)
-            => JsonSerializer.DeserializeAsync<T>(stream, SerializerExtensions.options).Result;
+            => JsonSerializer.DeserializeAsync<T>(stream, SerializerExtensions.options.Value).Result;
 
         public string Serialize(object obj)
             => obj.Serialize();

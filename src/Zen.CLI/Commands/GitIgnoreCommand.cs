@@ -44,7 +44,7 @@ namespace Zen.CLI.Commands
             if(string.IsNullOrWhiteSpace(setting.Query))
                 setting.Query = Ask<string>("Enter Operating Systems, IDEs, or Programming Languages (use comma to separate values)");
             var types = await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Querying...", async ctx =>
                 {
                     return await gitignoreService.ListTypesAsync(setting.Query);
@@ -66,7 +66,7 @@ namespace Zen.CLI.Commands
                     .AddChoices(types)
             );
             var content = await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Generating file...", async ctx =>
                 {
                     return await gitignoreService.DownloadAsync(choices);

@@ -12,7 +12,7 @@ namespace Zen.CLI.Commands.Information
         public override async Task<int> ExecuteAsync(CommandContext context)
         {
             await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Collecting information...", ctx =>
                 {
                     string GetPlatformSpecificInfo<TReturn>(NetworkInterface nic, Func<NetworkInterface, TReturn> func)

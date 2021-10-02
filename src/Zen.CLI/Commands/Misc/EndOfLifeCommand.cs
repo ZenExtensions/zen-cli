@@ -6,6 +6,7 @@ using Flurl.Http;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using Zen.Core.Constants;
+using Zen.Core.Extensions;
 
 namespace Zen.CLI.Commands.Misc
 {
@@ -14,7 +15,7 @@ namespace Zen.CLI.Commands.Misc
         public override async Task<int> ExecuteAsync(CommandContext context, EndOfLifeCommandSetting settings)
         {
             var tools = await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Checking...", ctx =>
                 {
                     return DefaultUrls.END_OF_LIFE_API
@@ -22,9 +23,9 @@ namespace Zen.CLI.Commands.Misc
                         .AppendPathSegment("all.json")
                         .GetJsonAsync<string[]>();
                 });
-            if(!string.IsNullOrWhiteSpace(settings.Prefix))
+            if(!string.IsNullOrWhiteSpace(settings.Query))
             {
-                tools = tools.Where(item => item.Contains(settings.Prefix, System.StringComparison.InvariantCultureIgnoreCase))
+                tools = tools.Where(item => item.Contains(settings.Query, System.StringComparison.InvariantCultureIgnoreCase))
                     .ToArray();
             }
             if(!tools.Any())
@@ -35,6 +36,7 @@ namespace Zen.CLI.Commands.Misc
             string tool = null;
             if(tools.Length == 1)
             {
+                AnsiConsole.WriteLine("Only one result found with matching critera");
                 tool = tools.First();
             }
             else
@@ -48,7 +50,7 @@ namespace Zen.CLI.Commands.Misc
                    );
             }
             var data = await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots6)
+                .Spinner(Spinner.Known.Dots)
                 .StartAsync("Checking...", ctx =>
                 {
                     return DefaultUrls.END_OF_LIFE_API
@@ -58,23 +60,23 @@ namespace Zen.CLI.Commands.Misc
                 });
             var table = new Table();
             table.Border(TableBorder.Rounded);
-            table.AddColumns("Cycle","Release","End Of Life","Latest Version","Is LTS");
+            table.AddColumns("Cycle","Release","End Of Life","Support","Latest Version","Is LTS");
             AnsiConsole.MarkupLine($"--[bold italic]{tool}[/]--");
             foreach (var item in data)
             {
-                var eolDate = DateTime.Parse(item.Eol);
-                string color = (eolDate < DateTime.Today) ? "red" : "blue";
+                var color = item.HasReachedEndOfLife ? "red": "blue";
                 table.AddRow(new []
                 {
                     $"[{color}]{item.Cycle}[/]",
-                    $"[{color}]{item.Release}[/]",
-                    $"[{color}]{item.Eol}[/]",
+                    $"[{color}]{item.Release?.GetDateTime().GetDateText()}[/]",
+                    $"[{color}]{item.Eol?.GetPossibleYesNoValue()}[/]",
+                    $"[{color}]{item.Support?.GetPossibleYesNoValue()}[/]",
                     $"[{color}]{item.Latest}[/]",
-                    $"[{color}]{item.IsLongTermSupported}[/]"
+                    $"[{color}]{item.Lts.GetBooleanText()}[/]"
                 });
             }
             AnsiConsole.Render(table);
-            AnsiConsole.MarkupLine("[red]Red[/] means its no longer supported");
+            AnsiConsole.MarkupLine("[red]Red[/] means it has reached end of life or is no longer supported");
 
 
             return 0;
@@ -82,8 +84,8 @@ namespace Zen.CLI.Commands.Misc
 
         public class EndOfLifeCommandSetting : CommandSettings
         {
-            [CommandOption("--prefix")]
-            public string Prefix { get; set; }
+            [CommandOption("-q|--query")]
+            public string Query { get; set; }
         }
 
         class EndOfLifeObject
@@ -92,10 +94,22 @@ namespace Zen.CLI.Commands.Misc
             public string Release { get; set; }
             public string Eol { get; set; }
             public string Latest { get; set; }
+            public string Support { get; set; }
             public bool Lts { get; set; }
-            public string IsLongTermSupported
+
+            public bool HasReachedEndOfLife
             {
-                get => Lts ? "Yes": "No";
+                get
+                {
+                    if(bool.TryParse(Support, out var val))
+                    {
+                        return !val;
+                    }
+                    var date = Eol.GetDateTime();
+                    if(date is null)
+                        return false;
+                    return date.Value < DateTime.Today;
+                }
             }
         }
     }
