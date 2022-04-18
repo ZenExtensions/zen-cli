@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Zen.CLI/Zen.CLI.csproj",
+                "${workspaceFolder}/src/Zen.Cli/Zen.Cli.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/Zen.CLI/Zen.CLI.csproj",
+                "${workspaceFolder}/src/Zen.Cli/Zen.Cli.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/Zen.CLI/Zen.CLI.csproj",
+                "${workspaceFolder}/src/Zen.Cli/Zen.Cli.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

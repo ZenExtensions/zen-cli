@@ -7,7 +7,7 @@ using System;
 using Spectre.Console.Cli;
 using Spectre.Console;
 
-namespace Zen.CLI.Commands.Information
+namespace Zen.Cli.Commands.Information
 {
     public class GetIPCommand : AsyncCommand
     {

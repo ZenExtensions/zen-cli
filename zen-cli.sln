@@ -5,7 +5,7 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0AA03540-3EFF-4054-89FB-3149C26A4D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zen.CLI", "src\Zen.CLI\Zen.CLI.csproj", "{B9A95231-40B2-4E09-9546-E5512663AF05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zen.Cli", "src\Zen.Cli\Zen.Cli.csproj", "{B9A95231-40B2-4E09-9546-E5512663AF05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zen.Core", "src\Zen.Core\Zen.Core.csproj", "{DFB151B9-24AB-4482-BA37-84345C2B13FE}"
 EndProject

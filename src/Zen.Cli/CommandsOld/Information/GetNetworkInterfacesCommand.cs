@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace Zen.CLI.Commands.Information
+namespace Zen.Cli.Commands.Information
 {
     public class GetNetworkInterfacesCommand : AsyncCommand
     {

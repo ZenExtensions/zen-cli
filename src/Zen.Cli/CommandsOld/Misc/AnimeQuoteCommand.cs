@@ -7,7 +7,7 @@ using Spectre.Console.Cli;
 using Zen.Core.Services.Anime;
 using static Spectre.Console.AnsiConsole;
 
-namespace Zen.CLI.Commands.Misc
+namespace Zen.Cli.Commands.Misc
 {
     public class AnimeQuoteCommand : AsyncCommand<AnimeQuoteCommand.AnimeQuoteCommandSetting>
     {

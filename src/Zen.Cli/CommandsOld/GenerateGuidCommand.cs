@@ -5,7 +5,7 @@ using Spectre.Console;
 using Spectre.Console.Cli;
 using TextCopy;
 
-namespace Zen.CLI.Commands
+namespace Zen.Cli.Commands
 {
     public class GenerateGuidCommand : AsyncCommand
     {

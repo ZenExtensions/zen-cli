@@ -6,7 +6,7 @@ using System.Text;
 using Spectre.Console.Cli;
 using static Spectre.Console.AnsiConsole;
 
-namespace Zen.CLI.Commands.Misc
+namespace Zen.Cli.Commands.Misc
 {
     public class GenerateMD5Command : Command<GenerateMD5Command.MD5CommandSetting>
     {

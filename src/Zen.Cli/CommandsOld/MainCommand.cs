@@ -1,7 +1,7 @@
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace Zen.CLI.Commands
+namespace Zen.Cli.Commands
 {
     public class MainCommand : Command
     {

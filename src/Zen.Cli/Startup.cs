@@ -3,17 +3,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 using TextCopy;
-using Zen.CLI.Commands;
-using Zen.CLI.Commands.Git;
-using Zen.CLI.Commands.Information;
-using Zen.CLI.Commands.Misc;
+using Zen.Cli.Commands;
+using Zen.Cli.Commands.Git;
+using Zen.Cli.Commands.Information;
+using Zen.Cli.Commands.Misc;
 using Zen.Core.Serializers;
 using Zen.Core.Services;
 using Zen.Core.Services.Anime;
 using Zen.Core.SpectreConsole;
 
-namespace Zen.CLI
+namespace Zen.Cli
 {
+    public delegate void CommandGroup(string name, IConfigurator<CommandSettings> configurator);
     public class Startup : BaseStartup, ISpectreConfiguration
     {
         public void ConfigureCommandApp(in IConfigurator configurator)

@@ -8,7 +8,7 @@ using Spectre.Console.Cli;
 using Zen.Core.Constants;
 using Zen.Core.Extensions;
 
-namespace Zen.CLI.Commands.Misc
+namespace Zen.Cli.Commands.Misc
 {
     public class EndOfLifeCommand : AsyncCommand<EndOfLifeCommand.EndOfLifeCommandSetting>
     {

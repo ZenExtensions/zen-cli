@@ -11,7 +11,7 @@ using Spectre.Console.Cli;
 using Spectre.Console.Rendering;
 using Zen.Core.Services;
 
-namespace Zen.CLI.Commands.Git
+namespace Zen.Cli.Commands.Git
 {
     public class GitSearchCommand : AsyncCommand<GitSearchCommand.GitSearchCommandSettings>
     {
