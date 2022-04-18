@@ -10,7 +10,7 @@ using Zen.CLI.Commands.Misc;
 using Zen.Core.Serializers;
 using Zen.Core.Services;
 using Zen.Core.Services.Anime;
-using Zen.SpectreConsole.Extensions;
+using Zen.Core.SpectreConsole;
 
 namespace Zen.CLI
 {

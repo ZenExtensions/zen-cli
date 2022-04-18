@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Spectre.Console.Cli;
-using Zen.SpectreConsole.Extensions;
+using Zen.Core.SpectreConsole;
 
 namespace Zen.CLI
 {

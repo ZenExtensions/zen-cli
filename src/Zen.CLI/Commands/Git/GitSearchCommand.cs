@@ -30,7 +30,7 @@ namespace Zen.CLI.Commands.Git
                     ctx.Status("Building tree...");
                     return BuildTreeFromDirectoryStructure(info);
                 });
-            AnsiConsole.Render(tree);
+            AnsiConsole.Write(tree);
             return Task.FromResult(0);
         }
 

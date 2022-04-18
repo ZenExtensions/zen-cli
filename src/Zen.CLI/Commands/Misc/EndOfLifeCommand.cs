@@ -75,7 +75,7 @@ namespace Zen.CLI.Commands.Misc
                     $"[{color}]{item.Lts.GetBooleanText()}[/]"
                 });
             }
-            AnsiConsole.Render(table);
+            AnsiConsole.Write(table);
             AnsiConsole.MarkupLine("[red]Red[/] means it has reached end of life or is no longer supported");
 
 

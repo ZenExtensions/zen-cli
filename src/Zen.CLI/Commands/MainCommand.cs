@@ -7,7 +7,7 @@ namespace Zen.CLI.Commands
     {
         public override int Execute(CommandContext context)
         {
-            AnsiConsole.Render(
+            AnsiConsole.Write(
                 new FigletText("ZEN CLI")
                     .LeftAligned()
                     .Color(Color.Aqua)

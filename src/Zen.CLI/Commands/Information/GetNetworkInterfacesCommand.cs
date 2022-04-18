@@ -54,7 +54,7 @@ namespace Zen.CLI.Commands.Information
                     }
                     table.Border(TableBorder.Rounded);
                     ctx.SpinnerStyle(Style.Parse("green"));
-                    AnsiConsole.Render(table);
+                    AnsiConsole.Write(table);
                     return Task.CompletedTask;
                 });
             return 0;
