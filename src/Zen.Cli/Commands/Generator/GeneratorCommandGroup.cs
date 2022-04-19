@@ -31,6 +31,9 @@ namespace Zen.Cli.Commands.Generator
                 .WithExample("generate", "giio", "-q", "visual")
                 .WithExample("generate", "giio", "--query", "visual", "--destination", "/home/user/projects/my-app/")
                 .WithExample("generate", "giio", "--query", "visual");
+            options.AddCommand<GeneratePasswordCommand>("password")
+                .WithDescription("Generates a random password")
+                .WithAlias("pwd");
         }
     }
 }
