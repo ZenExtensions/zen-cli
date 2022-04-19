@@ -8,7 +8,7 @@ namespace Zen.Cli.Commands.Generator
 {
     public class GeneratorCommandGroup : IZenCommandGroup
     {
-        public string Name => "generate";
+        public string Name => "gen";
 
         public void ConfigureCommandApp(IConfigurator<ZenCommandSetting> options)
         {
@@ -16,21 +16,21 @@ namespace Zen.Cli.Commands.Generator
             options.AddCommand<GenerateGuidCommand>("uuidgen")
                     .WithDescription("Generates Guid and copies to clipboard")
                     .WithAliases("guid", "uuid", "guidgen")
-                    .WithExample("generate","uuidgen")
-                    .WithExample("generate","guidgen")
-                    .WithExample("generate","guid")
-                    .WithExample("generate","uuid");
+                    .WithExample("gen","uuidgen")
+                    .WithExample("gen","guidgen")
+                    .WithExample("gen","guid")
+                    .WithExample("gen","uuid");
             options.AddCommand<GenerateMd5Command>("md5")
                     .WithDescription("Generates MD5 hash value")
                     .WithExample("generate", "md5", "\"Hello World\"");
             options.AddCommand<GenerateGitIgnoreCommand>("gitignore")
                 .WithDescription("Utility for gitignore.io")
                 .WithAlias("giio")
-                .WithExample("generate", "gitignore")
-                .WithExample("generate", "giio")
-                .WithExample("generate", "giio", "-q", "visual")
-                .WithExample("generate", "giio", "--query", "visual", "--destination", "/home/user/projects/my-app/")
-                .WithExample("generate", "giio", "--query", "visual");
+                .WithExample("gen", "gitignore")
+                .WithExample("gen", "giio")
+                .WithExample("gen", "giio", "-q", "visual")
+                .WithExample("gen", "giio", "--query", "visual", "--destination", "/home/user/projects/my-app/")
+                .WithExample("gen", "giio", "--query", "visual");
             options.AddCommand<GeneratePasswordCommand>("password")
                 .WithDescription("Generates a random password")
                 .WithAlias("pwd");
