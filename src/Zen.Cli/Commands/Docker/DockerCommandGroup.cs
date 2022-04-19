@@ -12,7 +12,8 @@ namespace Zen.Cli.Commands.Docker
         public void ConfigureCommandApp(IConfigurator<ZenCommandSetting> options)
         {
             options.SetDescription("Additional Operations to perform with docker cli");
-            options.AddCommand<RemovedUnusedImagesCommand>("remove-unused-images");
+            options.AddCommand<RemovedUnusedImagesCommand>("remove-unused-images")
+                .WithDescription("Removes unused docker images with no tag");
         }
     }
 }
