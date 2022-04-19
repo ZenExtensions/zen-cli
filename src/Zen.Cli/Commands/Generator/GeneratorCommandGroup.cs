@@ -22,7 +22,7 @@ namespace Zen.Cli.Commands.Generator
                     .WithExample("gen","uuid");
             options.AddCommand<GenerateMd5Command>("md5")
                     .WithDescription("Generates MD5 hash value")
-                    .WithExample("generate", "md5", "\"Hello World\"");
+                    .WithExample("gen", "md5", "\"Hello World\"");
             options.AddCommand<GenerateGitIgnoreCommand>("gitignore")
                 .WithDescription("Utility for gitignore.io")
                 .WithAlias("giio")
