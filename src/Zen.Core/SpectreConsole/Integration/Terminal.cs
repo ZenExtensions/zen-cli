@@ -22,7 +22,7 @@ namespace Zen.Core.SpectreConsole
         }
         public static void WriteSuccess(string message)
         {
-            AnsiConsole.MarkupLine($":check_mark_button: [green1]{message}[/]");
+            AnsiConsole.MarkupLine($":check_mark_button: [green]{message}[/]");
         }
         public static void WriteWarning(string message)
         {
