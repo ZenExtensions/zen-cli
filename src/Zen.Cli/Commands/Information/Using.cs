@@ -1,0 +1,1 @@
+global using Zen.Cli.Commands.Information.Setting;
