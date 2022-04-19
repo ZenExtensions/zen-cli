@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace Zen.Core.SpectreConsole.Integration
+namespace Zen.Core.SpectreConsole
 {
     public abstract class ZenCommand<TSetting> : AsyncCommand<TSetting> where TSetting : ZenCommandSetting
     {
@@ -25,5 +25,10 @@ namespace Zen.Core.SpectreConsole.Integration
         }
 
         public abstract Task ExecuteAsync(CancellationToken cancellationToken);
+    }
+
+    public abstract class ZenCommand : ZenCommand<ZenCommandSetting>
+    {
+        
     }
 }

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Spectre.Console;
+using Spectre.Console.Rendering;
 
-namespace Zen.Core.SpectreConsole.Integration
+namespace Zen.Core.SpectreConsole
 {
     public static class Terminal
     {
+        public static void WriteLine(string text) => AnsiConsole.WriteLine(text);
         public static void WriteBulletPoint(string text)
         {
             AnsiConsole.MarkupLine($":backhand_index_pointing_right: {text}");
@@ -32,6 +34,12 @@ namespace Zen.Core.SpectreConsole.Integration
             AnsiConsole.MarkupLine($":check_mark: [grey69]{message}[/]");
         }
 
+        public static Task<T> AskAsync<T>(string message, CancellationToken cancellationToken = default)
+        {
+            return new TextPrompt<T>(message)
+                .ShowAsync(AnsiConsole.Console, cancellationToken);
+        }
+
         public static Task<bool> ConfirmAsync(string message, CancellationToken cancellationToken = default)
         {
             return new ConfirmationPrompt(message)
@@ -48,7 +56,7 @@ namespace Zen.Core.SpectreConsole.Integration
             }.ShowAsync(AnsiConsole.Console, cancellationToken);
         }
 
-        public static Table CreateTable(string title)
+        public static Table NewTable(string title)
         {
             return new Table()
                 .Title(title)
@@ -85,6 +93,36 @@ namespace Zen.Core.SpectreConsole.Integration
         {
             return AnsiConsole.Status()
                 .Spinner(TerminalOptions.SpinnerStyle);
+        }
+
+        public static void Markup(string text) => AnsiConsole.Markup(text);
+        public static void MarkupLine(string text) => AnsiConsole.MarkupLine(text);
+
+        public static void Write(IRenderable renderable) => AnsiConsole.Write(renderable);
+        public static void Render(IRenderable renderable) => AnsiConsole.Write(renderable);
+
+        public static Task<List<T>> MultiSelectionPromptAsync<T>(string prompt, IEnumerable<T> choices, CancellationToken cancellationToken = default)
+        {
+            return new MultiSelectionPrompt<T>()
+                .Title(prompt)
+                .Required()
+                .PageSize(10)
+                .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
+                .InstructionsText(
+                    "[grey](Press [blue]<space>[/] to toggle a type, " + 
+                    "[green]<enter>[/] to accept)[/]")
+                .AddChoices(choices)
+                .ShowAsync(AnsiConsole.Console, cancellationToken);
+        }
+
+        public static Task<T> SingleSelectionPromptAsync<T>(string prompt, IEnumerable<T> choices, CancellationToken cancellationToken = default)
+        {
+            return new SelectionPrompt<T>()
+                .Title(prompt)
+                .PageSize(10)
+                .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
+                .AddChoices(choices)
+                .ShowAsync(AnsiConsole.Console, cancellationToken);
         }
     }
 }

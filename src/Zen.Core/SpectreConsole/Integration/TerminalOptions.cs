@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Spectre.Console;
 
-namespace Zen.Core.SpectreConsole.Integration
+namespace Zen.Core.SpectreConsole
 {
     public static class TerminalOptions
     {

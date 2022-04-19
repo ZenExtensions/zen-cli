@@ -7,10 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+
 ### Changed
 
-- Removed hidden commands
+- Moved gitignore generate command under generate
 
+### Removed
+
+- Removed git command group
+- Removed logo command
+- Removed hidden commands
 
 ## [1.2.2] - 2021-10-03
 
