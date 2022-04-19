@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2022-04-19
+
 ### Added
 
-- Added generate command group
+- Added generate password command
 
 ### Changed
 
@@ -131,7 +133,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added command to get public ip
 
-[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/1.2.2..HEAD
+[Unreleased]: https://github.com/WajahatAliAbid/zen-cli/compare/1.3.0..HEAD
+[1.3.0]: https://github.com/WajahatAliAbid/zen-cli/compare/1.2.2..1.3.0
 [1.2.2]: https://github.com/WajahatAliAbid/zen-cli/compare/1.2.1..1.2.2
 [1.2.1]: https://github.com/WajahatAliAbid/zen-cli/compare/1.2.0..1.2.1
 [1.2.0]: https://github.com/WajahatAliAbid/zen-cli/compare/1.1.2..1.2.0
