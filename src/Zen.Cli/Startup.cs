@@ -2,6 +2,7 @@ using Flurl.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TextCopy;
+using Zen.Cli.Commands.Docker;
 using Zen.Cli.Commands.Generator;
 using Zen.Cli.Commands.Information;
 using Zen.Core.Serializers;
@@ -19,7 +20,8 @@ namespace Zen.Cli
             var branches = new IZenCommandGroup[]
             {
                 new InformationCommandGroup(),
-                new GeneratorCommandGroup()
+                new GeneratorCommandGroup(),
+                new DockerCommandGroup()
             };
 
             foreach (var branch in branches)
@@ -35,6 +37,8 @@ namespace Zen.Cli
             {
                 setting.JsonSerializer = new SystemTextJsonSerialzier();
             });
+            services.RegisterCommandSettingFromAssembly<Startup>();
+            services.AddSingleton<ZenCommandSetting>();
         }
     }
 }

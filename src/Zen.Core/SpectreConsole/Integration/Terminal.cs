@@ -69,7 +69,7 @@ namespace Zen.Core.SpectreConsole
                 .Columns(TerminalOptions.ProgressColumns);
         }
 
-        public static Task<T> CrreateProgressTaskAsync<T>(string description, double maxCount, Func<ProgressTask, Task<T>> func)
+        public static Task<T> CreateProgressTaskAsync<T>(string description, double maxCount, Func<ProgressTask, Task<T>> func)
         {
             return Terminal.CreateProgress()
                 .StartAsync<T>(context =>
@@ -79,7 +79,7 @@ namespace Zen.Core.SpectreConsole
                 });
         }
 
-        public static Task CrreateProgressTaskAsync(string description, double maxCount, Func<ProgressTask, Task> func)
+        public static Task CreateProgressTaskAsync(string description, double maxCount, Func<ProgressTask, Task> func)
         {
             return Terminal.CreateProgress()
                 .StartAsync(context =>

@@ -41,5 +41,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Zen.Core\Zen.Core.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet" Version="3.125.5" />
+  </ItemGroup>
 
 </Project>
