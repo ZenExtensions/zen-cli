@@ -24,6 +24,11 @@ namespace Zen.Cli.Commands.Docker
                     }, cancellationToken);
                     return images.Where(item => item.RepoTags.Any(tag => tag.StartsWith("<none>")));
                 });
+            if(!images.Any())
+            {
+                Terminal.WriteInfo("No unused images found");
+                return;
+            }
             foreach (var image in images)
             {
                 Terminal.WriteBulletPoint($"{image.ID} ({image.Size.Bits().Humanize()})");
