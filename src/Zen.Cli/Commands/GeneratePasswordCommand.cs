@@ -12,6 +12,10 @@ namespace Zen.Cli.Commands
         [DefaultValue(12)]
         public int Length { get; set; }
 
+        [CommandOption("-g|--generate-secure-link")]
+        [Description("Generate a secure link to the password")]
+        public bool GenerateSecureLink { get; set; }
+
 
     }
 
@@ -36,7 +40,13 @@ namespace Zen.Cli.Commands
                 return;
             }
             await clipboard.SetTextAsync(password);
-            Terminal.WriteInfo($"Generated password: {password}");
+            Terminal.WriteInfo($"Generated password and copied to clipboard");
+            if (Settings.GenerateSecureLink)
+            {
+                var link = await Terminal.StatusAsync("Generating secure link", _ => IOneTyme.GetSecureLinkAsync(password));
+                Terminal.WriteInfo($"Secure link: {link}");
+                return;
+            }
         }
     }
 
