@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Zen.Core.SpectreConsole;
-using Zen.Cli;
+﻿using Zen.Cli;
 
-await SpectreConsoleHost
-    .WithStartup<Startup>(args)
-    .UseConfigurator<Startup>()
-    .RunAsync(args);
+await new CliHost("zen")
+    .Configure(c => {
+        c.Spinner = Spinner.Known.Arc;
+        c.TableBorder = TableBorder.Markdown;
+    })
+    .RunAsync<Startup>(args);

@@ -1,42 +1,35 @@
-using Flurl.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Spectre.Console.Cli;
 using TextCopy;
-using Zen.Cli.Commands.Generator;
-using Zen.Cli.Commands.Information;
-using Zen.Core.Serializers;
 
 namespace Zen.Cli
 {
-    public delegate void CommandGroup(string name, IConfigurator<CommandSettings> configurator);
-    public class Startup : BaseStartup, ISpectreConfiguration
+    public class Startup : BaseStartup
     {
-        public void ConfigureCommandApp(in IConfigurator configurator)
+        public override void ConfigureCommands(in IConfigurator configurator)
         {
-            configurator.SetApplicationName("zen");
-            configurator.CaseSensitivity(CaseSensitivity.None);
-            configurator.ValidateExamples();
-            var branches = new IZenCommandGroup[]
-            {
-                new InformationCommandGroup(),
-                new GeneratorCommandGroup()
-            };
-
-            foreach (var branch in branches)
-            {
-                configurator.AddBranch<ZenCommandSetting>(branch.Name,branch.ConfigureCommandApp);
-            }
+            configurator.AddBranch("gen", options => {
+                options.SetDescription("Generate different things from cli.");
+                options.AddCommand<GenerateGuidCommand>("uuid")
+                    .WithDescription("Generates Guid and copies to clipboard")
+                    .WithAlias("guid")
+                    .WithExample(new [] {"gen", "uuid"});
+                options.AddCommand<GeneratePasswordCommand>("password")
+                    .WithDescription("Generates password and copies to clipboard")
+                    .WithExample(new [] {"gen", "password"});
+            });
         }
 
-        public override void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration, IHostEnvironment hostingEnvironment)
         {
             services.InjectClipboard();
-            FlurlHttp.Configure(setting =>
-            {
-                setting.JsonSerializer = new SystemTextJsonSerialzier();
-            });
-            services.RegisterCommandSettingFromAssembly<Startup>();
-            services.AddSingleton<ZenCommandSetting>();
+            services.AddSingleton<GeneratePasswordCommandSetting>();
         }
     }
 }
