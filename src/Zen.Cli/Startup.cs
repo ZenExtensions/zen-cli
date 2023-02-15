@@ -23,6 +23,9 @@ public class Startup : BaseStartup
             options.AddCommand<GeneratePasswordCommand>("password")
                 .WithDescription("Generates password and copies to clipboard")
                 .WithExample(new[] { "gen", "password" });
+            options.AddCommand<GenerateGitIgnoreCommand>("gitignore")
+                .WithDescription("Generates gitignore file")
+                .WithExample(new[] { "gen", "gitignore" });
         });
 
         configurator.AddBranch("getinfo", options => {
