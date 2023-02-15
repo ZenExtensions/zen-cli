@@ -24,14 +24,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="$(SolutionDir)/LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Refit" Version="6.3.2" />
     <PackageReference Include="TextCopy" Version="6.2.1" />
