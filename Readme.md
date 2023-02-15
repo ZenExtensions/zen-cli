@@ -1,5 +1,5 @@
 # Zen
-[![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Build/badge.svg?branch=main)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Actions Status](https://github.com/WajahatAliAbid/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/WajahatAliAbid/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.3.2-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#132--2022-04-19)
+[![Actions Status](https://github.com/ZenExtensions/zen-cli/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/ZenExtensions/zen-cli/actions) [![Current Version](https://img.shields.io/badge/Version-1.4.0-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#140--2023-02-16)
 
 This command helps make things several day to day things easier.
 
@@ -26,19 +26,18 @@ USAGE:
     zen [OPTIONS] <COMMAND>
 
 EXAMPLES:
-    zen getinfo eol
-    zen getinfo eol --query dotnet
+    zen gen uuid
+    zen gen password
+    zen gen gitignore
     zen getinfo ip
-    zen getinfo myip
-    zen getinfo public-ip
 
 OPTIONS:
     -h, --help       Prints help information   
     -v, --version    Prints version information
 
 COMMANDS:
-    getinfo     Get information about things      
-    gen         Generate different things from cli
+    gen        Generate different things from cli
+    getinfo    Get information from cl
 ```
 # Changelog
 You can read complete changelog [here](./CHANGELOG.md)

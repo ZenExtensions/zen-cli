@@ -1,42 +1,45 @@
-using Flurl.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Spectre.Console.Cli;
 using TextCopy;
-using Zen.Cli.Commands.Generator;
-using Zen.Cli.Commands.Information;
-using Zen.Core.Serializers;
 
-namespace Zen.Cli
+namespace Zen.Cli;
+public class Startup : BaseStartup
 {
-    public delegate void CommandGroup(string name, IConfigurator<CommandSettings> configurator);
-    public class Startup : BaseStartup, ISpectreConfiguration
+    public override void ConfigureCommands(in IConfigurator configurator)
     {
-        public void ConfigureCommandApp(in IConfigurator configurator)
+        configurator.AddBranch("gen", options =>
         {
-            configurator.SetApplicationName("zen");
-            configurator.CaseSensitivity(CaseSensitivity.None);
-            configurator.ValidateExamples();
-            var branches = new IZenCommandGroup[]
-            {
-                new InformationCommandGroup(),
-                new GeneratorCommandGroup()
-            };
+            options.SetDescription("Generate different things from cli.");
+            options.AddCommand<GenerateGuidCommand>("uuid")
+                .WithDescription("Generates Guid and copies to clipboard")
+                .WithAlias("guid")
+                .WithExample(new[] { "gen", "uuid" });
+            options.AddCommand<GeneratePasswordCommand>("password")
+                .WithDescription("Generates password and copies to clipboard")
+                .WithExample(new[] { "gen", "password" });
+            options.AddCommand<GenerateGitIgnoreCommand>("gitignore")
+                .WithDescription("Generates gitignore file")
+                .WithExample(new[] { "gen", "gitignore" });
+        });
 
-            foreach (var branch in branches)
-            {
-                configurator.AddBranch<ZenCommandSetting>(branch.Name,branch.ConfigureCommandApp);
-            }
-        }
+        configurator.AddBranch("getinfo", options => {
+            options.SetDescription("Get information from cli.");
+            options.AddCommand<GetIpCommand>("ip")
+                .WithDescription("Get IP address")
+                .WithExample(new[] { "getinfo", "ip" });
+        });
+    }
 
-        public override void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
-        {
-            services.InjectClipboard();
-            FlurlHttp.Configure(setting =>
-            {
-                setting.JsonSerializer = new SystemTextJsonSerialzier();
-            });
-            services.RegisterCommandSettingFromAssembly<Startup>();
-            services.AddSingleton<ZenCommandSetting>();
-        }
+    public override void ConfigureServices(IServiceCollection services, IConfiguration configuration, IHostEnvironment hostingEnvironment)
+    {
+        services.InjectClipboard();
+        services.AddSingleton<GeneratePasswordCommandSetting>();
+        services.AddSingleton<GenerateGitIgnoreCommandSettings>();
     }
 }

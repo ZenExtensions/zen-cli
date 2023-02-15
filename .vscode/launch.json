@@ -9,10 +9,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Zen.Cli/bin/Debug/netcoreapp3.1/Zen.Cli.dll",
+            "program": "${workspaceFolder}/src/Zen.Cli/bin/Debug/net6.0/Zen.Cli.dll",
             "args": [
-                "misc",
-                "advise"
+                "gen",
+                "password"
             ],
             "cwd": "${workspaceFolder}/src/Zen.Cli",
             "console": "internalConsole",

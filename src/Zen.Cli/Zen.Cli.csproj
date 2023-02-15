@@ -1,22 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>10</LangVersion>
-    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>Zen Extensions</Company>
+    <Description>Zen CLI to provide utilities on command line</Description>
+    <RepositoryUrl>https://github.com/ZenExtensions/zen-cli</RepositoryUrl>
+    <PackageId>zen-cli</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>zen</ToolCommandName>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <Company>WajahatAliAbid</Company>
-    <Description>Zen CLI to automate boring work</Description>
-    <RepositoryUrl>https://github.com/WajahatAliAbid/zen-cli</RepositoryUrl>
-    <PackageId>zen-cli</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -33,13 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Zen.Core\Zen.Core.csproj" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="TextCopy" Version="6.2.1" />
+    <PackageReference Include="ZenExtensions.Spectre.Console" Version="1.4.0" />
   </ItemGroup>
 
 </Project>
