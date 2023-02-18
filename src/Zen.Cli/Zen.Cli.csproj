@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
     <PackageReference Include="TextCopy" Version="6.2.1" />
     <PackageReference Include="ZenExtensions.Spectre.Console" Version="1.4.1" />
   </ItemGroup>

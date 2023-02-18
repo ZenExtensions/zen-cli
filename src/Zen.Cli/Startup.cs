@@ -26,6 +26,9 @@ public class Startup : BaseStartup
             options.AddCommand<GenerateGitIgnoreCommand>("gitignore")
                 .WithDescription("Generates gitignore file")
                 .WithExample(new[] { "gen", "gitignore" });
+            options.AddCommand<GenerateJwtCommand>("jwt")
+                .WithDescription("Generates jwt token")
+                .WithExample(new[] { "gen", "jwt" });
         });
 
         configurator.AddBranch("getinfo", options => {
@@ -34,6 +37,15 @@ public class Startup : BaseStartup
                 .WithDescription("Get IP address")
                 .WithExample(new[] { "getinfo", "ip" });
         });
+
+        configurator.AddBranch("parse", options => {
+            options.SetDescription("Parse different files from cli.");
+            options.AddCommand<ParseCsvCommand>("csv")
+                .WithDescription("Parse csv file")
+                .WithExample(new[] { "parse", "csv" });
+        });
+
+        // configurator.PropagateExceptions();
     }
 
     public override void ConfigureServices(IServiceCollection services, IConfiguration configuration, IHostEnvironment hostingEnvironment)
@@ -41,5 +53,7 @@ public class Startup : BaseStartup
         services.InjectClipboard();
         services.AddSingleton<GeneratePasswordCommandSetting>();
         services.AddSingleton<GenerateGitIgnoreCommandSettings>();
+        services.AddSingleton<ParseCsvCommandSettings>();
+        services.AddSingleton<GenerateJwtCommandSettings>();
     }
 }
