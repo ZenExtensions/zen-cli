@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
+using TextCopy;
 
 namespace Zen.Cli.Commands
 {
@@ -72,9 +73,15 @@ namespace Zen.Cli.Commands
             return ValidationResult.Success();
         }
     }
-    public class GenerateJwtCommand : ZenCommand<GenerateJwtCommandSettings>
+    public class GenerateJwtCommand : ZenAsyncCommand<GenerateJwtCommandSettings>
     {
-        public override void OnExecute(CommandContext context, CancellationToken cancellationToken)
+
+        private readonly IClipboard clipboard;
+        public GenerateJwtCommand(IClipboard clipboard)
+        {
+            this.clipboard = clipboard;
+        }
+        public override async Task OnExecuteAsync(CommandContext context, CancellationToken cancellationToken)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var descriptor = new SecurityTokenDescriptor()
@@ -111,7 +118,7 @@ namespace Zen.Cli.Commands
             var securityToken = tokenHandler.CreateToken(descriptor);
             var token = tokenHandler.WriteToken(securityToken);
             Terminal.Write(token);
-
+            await clipboard.SetTextAsync(token);
         }
     }
 }
